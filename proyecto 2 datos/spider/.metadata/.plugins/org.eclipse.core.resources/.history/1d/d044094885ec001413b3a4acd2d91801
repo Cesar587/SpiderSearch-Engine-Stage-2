@@ -1,0 +1,62 @@
+//Ubiacion del archivo: C:\Users\Steven Ortiz\Desktop\SpiderSearch Engine Stage 2\src\Listas
+//Nombre del Arhivo: NodoSimple.java
+// Paquete Listas (contiene las clases nesesarias de las listas enlazadas)
+package Listas;
+
+/**
+ * Clase NodoSimple: Contiene los Objetos y apuntadores que se utilizaran para las listas enlazadas
+ * @author Steven Ortiz
+ * @version 1.0 (24/4/2015)
+ * @category Estructuras de datos lineales
+ */
+
+//Inicio de la clase NodoSimple
+
+// Clase NodoSimple contiene datos, apuntador, metodos para los apuntadoes y datos
+public class NodoSimple {
+	// datos: variable de tipo Objeto que contendra la informacion a almacenar
+	Object datos;
+	// siguiente: variable de tipo NodoSimple la cual nos servira de apuntador al siguente nodo
+	NodoSimple siguente;
+	
+	/**
+	 * Constructor que crea un objeto Nodosimple que hace referencia al objeto
+	 * @param objeto es un objeto de tipo Objetc
+	 */
+	NodoSimple(Object objeto){
+		// se crea el objeto con un valor de nulo
+		this (objeto , null);
+	}
+	
+	/**
+	 * Constructor crea un objeto NodoSimple que hace referencia a un objeto Object y al siguiente objeto NodoSimple
+	 * @param objeto es un objeto de tipo Object
+	 * @param nodo es un objeto de tipo NodoSimple
+	 */
+	 public NodoSimple(Object objeto ,NodoSimple nodo){
+		 // Al objeto datos se le asigna el valor de objeto
+		 datos = objeto;
+		 //Al objeto siguiente se le asigna el valor de nodo siguiente
+		 siguente = nodo;
+	 }
+	 
+	 /**
+	  * Metodo que obtiene el valor del objeto y lo retorna
+	  * @return devuelve el objeto Object en este nodo
+	  */
+	 Object obtenerDato(){
+		 // devuelve datos
+		 return datos;
+	 }
+	 
+	 /**
+	  *Metodo que devuelve la referencia al siguiente nodo en la lista
+	  * @return devuelve el valor del siguiente nodo
+	  */
+	 NodoSimple obtenerSiguiente(){
+		 //devuelve siguiente
+		 return siguente;
+	 }
+
+}
+//Fin de la clase NodoSimple

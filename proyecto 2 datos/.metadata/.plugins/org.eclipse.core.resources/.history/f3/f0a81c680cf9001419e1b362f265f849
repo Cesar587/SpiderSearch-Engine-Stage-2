@@ -1,0 +1,13 @@
+package Parser;
+
+public class PdfParse {
+	public PdfParse(){
+		
+	}
+	
+	public void casa(){
+		System.out.print("Casa");
+	}
+	
+	
+}

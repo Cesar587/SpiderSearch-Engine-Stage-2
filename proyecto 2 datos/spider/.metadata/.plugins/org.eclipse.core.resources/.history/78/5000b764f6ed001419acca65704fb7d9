@@ -1,0 +1,116 @@
+//Ubiacion del archivo: C:\Users\Steven Ortiz\Desktop\SpiderSearch Engine Stage 2\src\Listas
+//Nombre del Arhivo: ListaSimpleEnlazada.java
+// Paquete Listas (contiene las clases nesesarias de las listas enlazadas)
+package Listas;
+
+/**
+ * Clase ListaSimpleEnlazada: Crea una lista simple enlazada, ademas contiene metodos para insertar objetos,
+ * eliminar objetos, buscar objetos,
+ * @author Steven Ortiz
+ * @version 1.0 (26/4/2015)
+ * @category Estructuras de datos lineales
+ */
+
+//Inicio de la clase ListaSimpleEnlazada
+public class ListaSimpleEnlazada {
+	//Se crea un objeto de tipo NodoSimple llamado primero el cual sera el apuntador del inicio de la lista
+	 NodoSimple primero;
+	//Se crea un objeto de tipo NodoSimple llamado ultimo el cual sera el apuntador del fin de la lista
+	 NodoSimple ultimo;
+	//Se crea un objeto de tipo String llamado nomber el cual sera el nombre de la lista
+	 String nombre;
+	 //Se crea una variable de tipo entero para tener la cuenta de los elementos de la lista
+	 int largo;
+	 
+	/**
+	 * Metodo para verificar que la lista no sea vacia
+	 * Metodo tipo Boolean
+	 * @return true (lista es vacia) False (lista no vacia)
+	 */
+	 public boolean vacia(){
+		 if (primero ==null){
+			 return true;
+		 }
+		else {
+			return false;
+		}
+	 }
+	 
+	 /**
+	  * 
+	  * @return
+	  */
+	public int largo(){
+		return largo;
+	}
+	
+	/**
+	 * 
+	 * @return
+	 */
+	public Object fin(){
+		return ultimo.datos;
+	}
+	
+	/**
+	 * 
+	 */
+	public Object inico(){
+		return primero.datos;
+	}
+	
+	/*public void insertarFinal(Object dato){
+		if (vacia()==true){
+			primero=new NodoSimple(dato);
+			ultimo= primero;
+		}
+		else{
+			NodoSimple temp = ultimo;
+			NodoSimple aux= new NodoSimple(nuevo);
+			aux.enlazarSiguiente(temp);
+			primero=aux;
+		}
+		largo++;
+	}*/
+	
+	/**
+	 * 
+	 * @param nuevo
+	 */
+	public void insertarInicio(Object dato){
+		if (vacia()==true){
+			primero=new NodoSimple(dato);
+			ultimo= primero;
+		}
+		else{
+			NodoSimple ant = primero;
+			NodoSimple nuevo= new NodoSimple(dato);
+			nuevo.siguente=ant;
+			primero=nuevo;
+		}
+		largo++;
+	}
+	
+	/**
+	 * 
+	 * @param pos
+	 * @return
+	 */
+	public Object posicion(int pos){
+		if (pos<=largo){
+			int contador=1;
+			NodoSimple aux = primero;
+			while(contador<pos){
+				aux=aux.siguente;
+				contador++;
+			}
+			return aux.obtenerDato();
+		}
+		else{
+			return "Error";
+		}
+	}
+	
+	
+
+}

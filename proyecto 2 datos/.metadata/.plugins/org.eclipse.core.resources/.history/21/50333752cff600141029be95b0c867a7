@@ -1,0 +1,351 @@
+//Nombre del Arhivo= BST.java
+//Paquete ArbolBST (contiene las clases nesesarias de los ArbolBST)
+package ArbolBST;
+
+/**
+ * Clase NBST: Contiene los objetos (raiz y nombre)y los
+ * metodos de (insertar, borrar, vacio, raiz, altura, cantidad de nodos) 
+ * que se utilizaran para los arboles
+ * @author Steven Ortiz
+ * @version 1.0 (1/5/15)
+ * @category Estructuras de datos jerarquicas
+ */
+
+//Inicio de la clase BST
+
+//Clase BST contiene los objetos (raiz y nombre)y los 
+//metodos de (insertar, borrar, vacio, raiz, altura, cantidad de nodos)  
+//que se utilizaran para los arboles
+public class BST {
+	//Se crea un objeto de tipo NodoBST con el nombre de raiz que apuntara ala raiz del arbol
+	public NodoBST raiz;
+	//Se crea un objeto de tipo String con el nombre de nombre que contendra el nombre del arbol
+	public String nombre;
+	//Se crea un objeto de tipo Int(Entero)con el nombre de largo que contendra la cantidad de elementos del arbol
+	public int largo;
+	
+	/**
+	 * Consctructor de la clase que hace referencia al nodo raiz
+	 * Metodo de tipo BST
+	 */
+	public BST(){
+		//Al objeto raiz se le asigna el valor de nulo
+		raiz = null;
+	}
+	
+	/**
+	 * Metodo que inserta un nodo al arbol resive dos parametros
+	 * Metodo de tipo Void
+	 * @param llave (llave del nodo a insertar)
+	 * @param dato (dato del nodo a insertar)
+	 */
+	public void insertar(int llave , Object dato){
+		//Se crea un objeto de tipo NodoBST y se le asigana el nombre de nuevo
+		NodoBST nuevo= new NodoBST(llave);
+		//al nodo nuevo se le agrega el dato el cual se toma de la entrada del usuario
+		nuevo.dato=dato;
+		// condicion ( si la raiz del arbol es nula)
+		if (raiz == null) {
+			//la raiz sera el nuevo nodo
+			raiz = nuevo;
+			//Aumenta el valor del objeto largo en una unidad
+			largo++;
+		} 
+		// si no se cumple
+		else {
+			// se crea un nuevo objeto de tipo NodoBST llamado aux y se le asigna el valor de la raiz
+			NodoBST aux = raiz;
+			//Ciclo(mientras el nodo aux sea diferente de nulo
+			while (aux != null) {
+				//al nodo nuevo se le asigna como padre el nodo auxiliar
+				nuevo.padre=aux;
+				//condicion: si la llave del nuevo nodo sea mayor o igual a la del nodo auxiliar
+				if (nuevo.llave >= aux.llave) {
+					//el nodo auxiliar se posiciona como hijo derecho
+					aux=aux.hijoDerecho;
+				}
+				//si no se cumple
+				else {
+					//el nodo auxiliar se posiciona como hijo izquierdo
+					aux=aux.hijoIzquierdo;
+				}
+			}
+			//condicion: si la llave del nuevo nodo es menor a la llave del  nodo padre
+			if (nuevo.llave < nuevo.padre.llave) {
+				//el nuevo nodo se ubica a la izquierda del nodo padre
+				nuevo.padre.hijoIzquierdo=nuevo;
+				//Aumenta el valor del objeto largo en una unidad
+				largo++;
+			}
+			//si no se cumple
+			else {
+				//el nuevo nodo se ubica a la derecha del nodo padre
+				nuevo.padre.hijoDerecho=nuevo;
+				//Aumenta el valor del objeto largo en una unidad
+				largo++;
+			}
+		}
+	}
+	
+	/**
+	 * Medoto que llama a una funcion para recorrer el arlbol en orden y le ingresa cono inicio la raiz
+	 * Metodo de tipo Void 
+	 */
+	public void recorridoEnOrden(){
+		//llamada al metodo recorridoEnOrdenAux(valor de inicio del recorrido)
+		recorridoEnOrdenAux(raiz);
+	}
+	
+	/**
+	 * Metodo que recorre el arbol en orden
+	 * Metodo de tipo Void
+	 * @param aux (valor de inicio del recorrido)
+	 */
+	private void recorridoEnOrdenAux(NodoBST aux){
+		//condicion: si el nodo auxilar es diferente de nulo
+		if (aux!=null) {
+			//llamada al metodo recorridoEnORdenAux(dnado como vaor de inicio el hijo izquierdo del nodo)
+			recorridoEnOrdenAux(aux.hijoIzquierdo);
+			//Imprime en pantalla la llave del nodo
+			System.out.println(aux.llave);
+			//llamada al metodo recorridoEnORdenAux(dnado como vaor de inicio el hijo derecho del nodo)
+			recorridoEnOrdenAux(aux.hijoDerecho);
+			
+		}
+	}
+	
+	/**
+	 * Medoto que llama a una funcion para recorrer el arlbol en pre orden y le ingresa cono inicio la raiz
+	 * Metodo de tipo Void 
+	 */
+	public void recorridoEnPreOrden(){
+		recorridoEnPreOrdenAux(raiz);
+	}
+	
+	/**
+	 * Metodo que recorre el arbol en pre orden
+	 * Metodo de tipo Void
+	 * @param aux (valor de inicio del recorrido)
+	 */
+	private void recorridoEnPreOrdenAux(NodoBST aux){
+		if (aux!=null) {
+			//Imprime en pantalla la llave del nodo
+			System.out.println(aux.llave);
+			//llamada al metodo recorridoEnPreORdenAux(dnado como vaor de inicio el hijo izquierdo del nodo)
+			recorridoEnPreOrdenAux(aux.hijoIzquierdo);
+			//llamada al metodo recorridoEnPreORdenAux(dnado como vaor de inicio el hijo derecho del nodo)
+			recorridoEnPreOrdenAux(aux.hijoDerecho);
+		}
+	}
+	
+	/**
+	 * Medoto que llama a una funcion para recorrer el arlbol en post orden y le ingresa cono inicio la raiz
+	 * Metodo de tipo Void 
+	 */
+	public void recorridoEnPostOrden(){
+		recorridoEnPostOrdenAux(raiz);
+	}
+	
+	/**
+	 * Metodo que recorre el arbol en post orden
+	 * Metodo de tipo Void
+	 * @param aux (valor de inicio del recorrido)
+	 */
+	private void recorridoEnPostOrdenAux(NodoBST aux){
+		if (aux!=null) {
+			//llamada al metodo recorridoEnPostORdenAux(dnado como vaor de inicio el hijo izquierdo del nodo)
+			recorridoEnPostOrdenAux(aux.hijoIzquierdo);
+			//llamada al metodo recorridoEnPostORdenAux(dnado como vaor de inicio el hijo derecho del nodo)
+			recorridoEnPostOrdenAux(aux.hijoDerecho);
+			//Imprime en pantalla la llave del nodo
+			System.out.println(aux.llave);
+		}
+		
+	}
+	
+	/**
+	 * Metodo que verifica que el arbol no este vacio
+	 * Metodo tipo Boolean
+	 * @return true/false (si es o no vacia)
+	 */
+	public boolean vacio(){
+		// retorna si es o no nula la raiz del arbol
+		return raiz==null;
+	}
+	
+	/**
+	 * Metodo que busca una llave de un nodo en el arbol y la retorna
+	 * Metodo tipo NodoBST
+	 * @param llaveaux (llave a buscar en el arbol)
+	 * @return aux (nodo que tiene esa llave)
+	 */
+	public NodoBST buscarLlave(int llaveaux){
+		NodoBST aux =raiz;
+		while (llaveaux!=aux.llave) {
+			if (llaveaux<aux.llave) {
+				aux=aux.hijoIzquierdo;
+			}
+			
+			else {
+				aux=aux.hijoDerecho;
+			}
+			if (aux==null){
+				return null;
+			}
+		}
+		return aux;
+	}
+	
+	
+	/**
+	 * 
+	 */
+	public boolean buscarDato(String dato){
+		NodoBST aux =raiz;
+		if (buscaDatoAux(aux, dato)==true) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+
+	/**
+	 * 
+	 * @param aux
+	 * @param dato
+	 * @return
+	 */
+	public boolean buscaDatoAux(NodoBST aux,String dato){
+		if (aux.dato.equals(dato)!=true) {
+			buscaDatoAux(aux.hijoDerecho, dato);
+			//buscaDatoAux(aux.hijoIzquierdo, dato);
+		}
+		return true;
+		
+	}
+	
+	/**
+	 * 
+	 * @param pos
+	 * @return
+	 */
+	public boolean eliminar(int pos){
+		NodoBST auxiliar =raiz;
+		NodoBST padre=raiz;
+		boolean esHijoIzquierdo=true;
+		while (auxiliar.llave!=pos) {
+			padre=auxiliar;
+			if (pos<auxiliar.llave) {
+				esHijoIzquierdo=true;
+				auxiliar=auxiliar.hijoIzquierdo;
+			}
+			else {
+				esHijoIzquierdo=false;
+				auxiliar=auxiliar.hijoDerecho;
+			}
+			if (auxiliar==null) {
+				return false;
+				
+			}
+		}
+		if (auxiliar.hijoIzquierdo==null && auxiliar.hijoDerecho==null) {
+			if (auxiliar==raiz){
+				raiz=null;
+			}
+			else if (esHijoIzquierdo) {
+				padre.hijoIzquierdo=null;
+			}
+			else {
+				padre.hijoDerecho=null;
+			}
+		}
+		else if (auxiliar.hijoDerecho==null) {
+			if (auxiliar==raiz){
+				raiz=auxiliar.hijoIzquierdo;
+			}
+			else if (esHijoIzquierdo) {
+				padre.hijoIzquierdo=auxiliar.hijoIzquierdo;
+			}
+			else {
+				padre.hijoDerecho=auxiliar.hijoIzquierdo;
+			}
+		}
+		else if (auxiliar.hijoIzquierdo==null) {
+			if (auxiliar==raiz){
+				raiz=auxiliar.hijoDerecho;
+			}
+			else if (esHijoIzquierdo) {
+				padre.hijoIzquierdo=auxiliar.hijoDerecho;
+			}
+			else {
+				padre.hijoDerecho=auxiliar.hijoIzquierdo;
+			}
+		}
+		else {
+			NodoBST reemplazo =obtenerNodoReemplazo(auxiliar);
+			if (auxiliar==raiz) {
+				raiz=reemplazo;
+			}
+			else if (esHijoIzquierdo) {
+				padre.hijoIzquierdo=reemplazo;
+			}
+			else {
+				padre.hijoDerecho=reemplazo;
+			}
+			reemplazo.hijoIzquierdo=auxiliar.hijoIzquierdo;
+			
+		}
+		return true;
+	}
+	
+	/**
+	 * 
+	 * @param aux
+	 * @return
+	 */
+	private NodoBST obtenerNodoReemplazo(NodoBST aux) {
+		NodoBST reemplazoPadre= aux;
+		NodoBST reemplazo=aux;
+		NodoBST temporal=aux.hijoDerecho;
+		while (temporal!=null) {
+			reemplazoPadre=reemplazo;
+			reemplazo=temporal;
+			temporal=temporal.hijoIzquierdo;
+		}
+		if (reemplazo!=aux.hijoDerecho) {
+			reemplazoPadre.hijoIzquierdo=reemplazo.hijoDerecho;
+			reemplazo.hijoDerecho=aux.hijoDerecho;
+		}
+		return reemplazo;
+	}
+	
+	
+	/**
+	 * 
+	 * @return
+	 */
+	public String obtenerNombre() {
+		return nombre;
+	}
+
+	/**
+	 * 
+	 * @param nombre
+	 */
+	public void insertarNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	public NodoBST obtenerRaiz() {
+		return raiz;
+	}
+	
+	
+
+}
+//Fin clase BST

@@ -1,0 +1,28 @@
+package Main;
+import Listas.*;
+
+public class Main {
+
+	public static void main(String[] args) {
+		ListaSimpleEnlazada lista = new ListaSimpleEnlazada();
+		lista.insertarInicio(5);
+		lista.insertarInicio(4);
+		lista.insertarInicio(3);
+		lista.insertarInicio(2);
+		lista.insertarInicio(1);
+		
+		System.out.println("larago: "+lista.largo());
+		System.out.println("Busca en posicion "+lista.posicion(4));
+		System.out.println("Busca en posicion "+lista.posicion(7));
+		System.out.println("Vacia "+lista.vacia());
+		System.out.println(lista.fin());
+		System.out.println(lista.inico());
+		
+		
+		
+		
+		
+		
+	}
+
+}

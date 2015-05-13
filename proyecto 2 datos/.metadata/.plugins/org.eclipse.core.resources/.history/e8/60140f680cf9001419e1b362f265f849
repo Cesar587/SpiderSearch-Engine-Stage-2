@@ -1,0 +1,61 @@
+package Carpetas;
+
+import java.io.File;
+
+public class BuscaArchivos {
+	
+	public BuscaArchivos(){
+		
+	}
+	
+	public void buscarCarpetas(String dir){
+		 buscarCarpetasAux(new File(dir));
+	}
+	
+	private void buscarCarpetasAux(File dir){
+		if (dir.exists()){
+		 File listFile[] = dir.listFiles();
+	        if (listFile.length != 0) {
+	            for (int i = 0; i < listFile.length;) {
+	            	if (listFile[i].getName().endsWith(".pdf")) {
+	            		 System.out.println(listFile[i].getName());
+	            		i++;
+					
+					}
+	            	else {
+						i++;
+					}
+	            }
+	            
+	        }
+	        else {
+	        	 System.out.println("vacia");
+			}
+	        
+		}
+		else {
+			
+			 System.out.println( dir.exists());
+		}
+	}
+	
+	public void buscarsubcarpeta(String dir){
+		buscarCarpeta(new File(dir));
+		
+	}
+	
+	private void buscarCarpeta(File dir){
+		 File listFile[] = dir.listFiles();
+	        if (listFile != null) {
+	            for (int i = 0; i < listFile.length; i++) {
+	                if (listFile[i].isDirectory()) {
+	                    buscarCarpeta(listFile[i]);
+	                } else {
+	                    System.out.println(listFile[i].getName());
+	                }
+	            }
+	        }
+        
+    }
+
+}

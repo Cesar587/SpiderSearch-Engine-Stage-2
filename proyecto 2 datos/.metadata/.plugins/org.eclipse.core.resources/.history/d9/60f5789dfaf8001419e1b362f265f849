@@ -1,0 +1,100 @@
+package Parser;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FilenameFilter;
+import java.io.IOException;
+
+import org.apache.tika.exception.TikaException;
+import org.apache.tika.metadata.Metadata;
+import org.apache.tika.parser.ParseContext;
+import org.apache.tika.parser.pdf.PDFParser;
+import org.apache.tika.sax.BodyContentHandler;
+import org.xml.sax.SAXException;
+
+import Listas.ListaSimpleEnlazada;
+import Listas.NodoSimple;
+
+public class PdfParse {
+	String mensaje;
+	public PdfParse(){
+		
+	}
+	
+	public void casa(){
+		System.out.print("Casa");
+	}
+	
+	//public String parserPdf (String ruta){
+		
+	//}
+	
+	/*public void parser() throws IOException,TikaException, SAXException {
+
+	      BodyContentHandler handler = new BodyContentHandler();
+	      Metadata metadata = new Metadata();
+	      FileInputStream inputstream = new FileInputStream(new File("Example.pdf"));
+	      ParseContext pcontext = new ParseContext();
+	      
+	      //parsing the document using PDF parser
+	      PDFParser pdfparser = new PDFParser(); 
+	      pdfparser.parse(inputstream, handler, metadata,pcontext);
+	      
+	      //getting the content of the document
+	      System.out.println("Contents of the PDF :" + handler.toString());
+	      
+	      //getting metadata of the document
+	      System.out.println("Metadata of the PDF:");
+	      String[] metadataNames = metadata.names();
+	      
+	      for(String name : metadataNames) {
+	         System.out.println(name+ " : " + metadata.get(name));
+	      }
+	 }*/
+	/*public void buscarsubcarpeta(String dir){
+		buscarCarpeta(new File(dir));
+		
+	}
+	private void buscarCarpeta(File dir){
+		 File listFile[] = dir.listFiles();
+	        if (listFile != null) {
+	            for (int i = 0; i < listFile.length; i++) {
+	                if (listFile[i].isDirectory()) {
+	                    buscarCarpeta(listFile[i]);
+	                } else {
+	                    System.out.println(listFile[i].getName());
+	                }
+	            }
+	        }
+        
+    }*/
+	public void buscarCarpetas(String dir){
+		 buscarCarpetasAux(new File(dir));
+	}
+	private void buscarCarpetasAux(File dir){
+		if (dir.exists()){
+		 File listFile[] = dir.listFiles();
+		 System.out.println(listFile.length);
+	        if (listFile.length != 0) {
+	            for (int i = 0; i < listFile.length;) {
+	            	if (listFile[i].getName().endsWith(".pdf")) {
+	            		 System.out.println(listFile[i].getPath());
+	            		i++;
+					
+					}
+	            	else {
+						i++;
+					}
+	            }
+	            System.out.println( listFile);
+	        }
+	        else {
+	        	 System.out.println("vacia");
+			}
+	        
+		}
+		else {
+			
+			 System.out.println( dir.exists());
+		}
+   }
+}

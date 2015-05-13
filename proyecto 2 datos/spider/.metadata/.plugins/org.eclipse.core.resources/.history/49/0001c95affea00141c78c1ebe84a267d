@@ -1,0 +1,19 @@
+// Paquete Listas (contiene las clases nesesarias de las listas enlazadas)
+package Listas;
+
+/**
+ * Clase Nodo: Contiene los Objetos y apuntadores que se utilizaran en las listas
+ * @author Steven Ortiz
+ * @version 1.0 (24/4/2015)
+ * @category Estructuras de datos lineales
+ */
+
+// Clase Nodo contiene datos, apuntador, metodos para los apuntadoes y datos
+public class NodoSimple {
+	// datos: variable de tipo Objeto que contendra la informacion a almacenar
+	Object datos;
+	// siguiente: 
+	NodoSimple siguente;
+	 
+
+}

@@ -1,0 +1,22 @@
+package Main;
+import Listas.*;
+
+public class Main {
+
+	public static void main(String[] args) {
+		ListaSimpleEnlazada lista = new ListaSimpleEnlazada();
+		lista.insertarInicio(1);
+		lista.insertarInicio(2);
+		lista.insertarInicio(3);
+		lista.insertarInicio(4);
+		lista.insertarInicio(5);
+		
+		System.out.println(lista.largo());
+		System.out.println(lista.posicion(3));
+		
+		
+		
+		
+	}
+
+}

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="Arboles.NodoBST"/>
+<fullyQualifiedTypeName name="ArbolAVL.AVL"/>
+<fullyQualifiedTypeName name="java.lang.Math"/>
+<fullyQualifiedTypeName name="ArbolAVL.NodoAVL"/>
+<fullyQualifiedTypeName name="javax.print.attribute.standard.Sides"/>
+<fullyQualifiedTypeName name="org.apache.tika.parser.AutoDetectParser"/>
+<fullyQualifiedTypeName name="org.apache.poi.hdf.model.util.ParsingState"/>
+<fullyQualifiedTypeName name="org.apache.tika.Tika"/>
+<fullyQualifiedTypeName name="org.omg.CORBA.portable.InputStream"/>
+<fullyQualifiedTypeName name="org.apache.james.mime4j.parser.ContentHandler"/>
+<fullyQualifiedTypeName name="com.google.protobuf.Parser"/>
+<fullyQualifiedTypeName name="Parser.PdfParse"/>
+<fullyQualifiedTypeName name="java.lang.Object"/>
+<fullyQualifiedTypeName name="Listas.ListaSimpleEnlazada"/>
+<fullyQualifiedTypeName name="Listas.NodoSimple"/>
+<fullyQualifiedTypeName name="java.lang.System"/>
+<fullyQualifiedTypeName name="java.io.File"/>
+<fullyQualifiedTypeName name="Carpetas.BuscaArchivos"/>
+<fullyQualifiedTypeName name="java.lang.String"/>
+</qualifiedTypeNameHistroy>

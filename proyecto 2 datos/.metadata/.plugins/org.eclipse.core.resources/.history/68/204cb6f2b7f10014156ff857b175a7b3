@@ -1,0 +1,58 @@
+package Main;
+import Arboles.*;
+import Listas.*;
+
+public class Main {
+
+	public static void main(String[] args) {
+		ListaSimpleEnlazada lista = new ListaSimpleEnlazada();
+		lista.insertarInicio(5);
+		//lista.insertarFinal(6);
+		//lista.insertarFinal(7);
+		//lista.insertarInicio(4);
+		//lista.insertarInicio(3);
+		//lista.insertarInicio(2);
+		//lista.insertarInicio(1);
+		//System.out.println("largo: "+lista.largo());
+		//System.out.println("Busca en posicion: "+lista.buscarPosicion(6));
+		//System.out.println("Busca en posicion: "+lista.buscarPosicion(25));
+		//System.out.println("Vacia: "+lista.vacia());
+		//System.out.println("primero: "+lista.inico());
+		//System.out.println("ultimo: "+lista.fin());
+		//lista.eliminarPrimero();
+		//lista.insertarNombe("Lista de Numeros");
+		//System.out.println(lista.nombreLista());
+		//lista.cortarPosicion(4);
+		//System.out.println("primero: "+lista.inico());
+		//System.out.println("Busca en posicion: "+lista.buscarPosicion(7));
+		//lista.eliminarPosicion(7);
+		//System.out.println("Busca en posicion: "+lista.buscarPosicion(6));
+		//System.out.println("Cuenta : "+lista.cuenta());
+		
+		
+		BST arbol=new BST();
+		System.out.println(arbol.vacio());
+		arbol.insertar(8 , "casa");
+		arbol.insertar(5 , "caza");
+		arbol.insertar(9 , "cas");
+		arbol.insertar(1 , "casar");
+		arbol.insertar(12 , "cascara");
+		
+		arbol.recorridoEnOrden();
+		
+		System.out.println(arbol.vacio());
+		
+		//arbol.recorridoEnPreOrden();
+		
+		//System.out.println(arbol.vacio());
+		
+		//arbol.recorridoEnPostOrden();
+		
+		System.out.println(arbol.buscarLlave(10));
+		
+		
+		
+		
+	}
+
+}

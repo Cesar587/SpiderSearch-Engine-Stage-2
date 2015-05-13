@@ -1,0 +1,117 @@
+package ArbolAVL;
+
+
+
+public class AVL {
+	//Se crea un objeto de tipo NodoAVL con el nombre de raiz que apuntara ala raiz del arbol
+	public NodoAVL raiz;
+	//Se crea un objeto de tipo String con el nombre de nombre que contendra el nombre del arbol
+	public String nombre;
+	//Se crea un objeto de tipo Int(Entero)con el nombre de largo que contendra la cantidad de elementos del arbol
+	public int largo;
+
+	/**
+	 * Consctructor de la clase que hace referencia al nodo raiz
+	 * Metodo de tipo AVL
+	 */
+	public AVL(){
+		//Al objeto raiz se le asigna el valor de nulo
+		raiz = null;
+	}
+	/**
+	 * 
+	 * @param pos
+	 */
+	public void buscar(int pos){
+		buscarAux(pos,raiz);
+	}
+	
+	/**
+	 * 
+	 * @param pos
+	 * @param aux
+	 * @return
+	 */
+	private NodoAVL buscarAux(int pos, NodoAVL aux){
+		if (raiz==null) {
+			return null;
+		}
+		else if (aux.llave==pos) {
+			return aux;
+		} 
+		else if (aux.llave<pos) {
+			return buscarAux(pos, aux.hijoDerecho);
+		}
+		else {
+			return buscarAux(pos, aux.hijoIzquierdo);
+		}
+	}
+	
+	/**
+	 * 
+	 * @param aux
+	 * @return
+	 */
+	public int obtenerFactorEquilibrio(NodoAVL aux){
+		if (aux==null) {
+			return -1;
+		}
+		else {
+			return aux.nodoAltura;
+		}
+	}
+	
+	/**
+	 * 
+	 * @param nodo
+	 * @return
+	 */
+	public NodoAVL rotacionSimpleIzquierda(NodoAVL nodo){
+		NodoAVL aux = nodo.hijoIzquierdo;
+		nodo.hijoIzquierdo=aux.hijoDerecho;
+		aux.hijoDerecho=nodo;
+		nodo.nodoAltura=Math.max(obtenerFactorEquilibrio(nodo.hijoIzquierdo), obtenerFactorEquilibrio(nodo.hijoDerecho))+1;
+		aux.nodoAltura=Math.max(obtenerFactorEquilibrio(aux.hijoIzquierdo), obtenerFactorEquilibrio(aux.hijoDerecho))+1;
+		return aux;
+	}
+	
+	/**
+	 * 
+	 * @param nodo
+	 * @return
+	 */
+	public NodoAVL rotacionSimpleDerecha(NodoAVL nodo){
+		NodoAVL aux = nodo.hijoDerecho;
+		nodo.hijoDerecho=aux.hijoIzquierdo;
+		aux.hijoIzquierdo=nodo;
+		nodo.nodoAltura=Math.max(obtenerFactorEquilibrio(nodo.hijoIzquierdo), obtenerFactorEquilibrio(nodo.hijoDerecho))+1;
+		aux.nodoAltura=Math.max(obtenerFactorEquilibrio(aux.hijoIzquierdo), obtenerFactorEquilibrio(aux.hijoDerecho))+1;
+		return aux;
+	}
+	
+	/**
+	 * 
+	 * @param nodo
+	 * @return
+	 */
+	public NodoAVL rotacionDobleIzquierda(NodoAVL nodo){
+		NodoAVL aux;
+		nodo.hijoIzquierdo=rotacionSimpleDerecha(nodo.hijoIzquierdo);
+		aux=rotacionSimpleIzquierda(nodo);
+		return aux;
+	}
+	
+	/**
+	 * 
+	 * @param nodo
+	 * @return
+	 */
+	public NodoAVL rotacionDobleDerecha(NodoAVL nodo){
+		NodoAVL aux;
+		nodo.hijoDerecho=rotacionSimpleIzquierda(nodo.hijoDerecho);
+		aux=rotacionSimpleDerecha(nodo);
+		return aux;
+	}
+	
+
+}

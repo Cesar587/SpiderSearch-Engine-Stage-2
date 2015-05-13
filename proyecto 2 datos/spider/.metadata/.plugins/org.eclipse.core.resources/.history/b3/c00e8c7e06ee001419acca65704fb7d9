@@ -1,0 +1,129 @@
+//Ubiacion del archivo: C:\Users\Steven Ortiz\Desktop\SpiderSearch Engine Stage 2\src\Listas
+//Nombre del Arhivo: ListaSimpleEnlazada.java
+// Paquete Listas (contiene las clases nesesarias de las listas enlazadas)
+package Listas;
+
+/**
+ * Clase ListaSimpleEnlazada: Crea una lista simple enlazada, ademas contiene metodos para insertar objetos,
+ * eliminar objetos, buscar objetos,
+ * @author Steven Ortiz
+ * @version 1.0 (26/4/2015)
+ * @category Estructuras de datos lineales
+ */
+
+//Inicio de la clase ListaSimpleEnlazada
+public class ListaSimpleEnlazada {
+	//Se crea un objeto de tipo NodoSimple llamado primero el cual sera el apuntador del inicio de la lista
+	 NodoSimple primero;
+	//Se crea un objeto de tipo NodoSimple llamado ultimo el cual sera el apuntador del fin de la lista
+	 NodoSimple ultimo;
+	//Se crea un objeto de tipo String llamado nomber el cual sera el nombre de la lista
+	 String nombre;
+	 //Se crea una variable de tipo entero para tener la cuenta de los elementos de la lista
+	 int largo;
+	 
+	/**
+	 * Metodo para verificar que la lista no sea vacia y retorna un valor true/false
+	 * Metodo tipo Boolean
+	 * @return true (lista es vacia) False (lista no vacia)
+	 */
+	 public boolean vacia(){
+		 //condicion: si el indice que apunta al primer nodo es nulo
+		 if (primero ==null){
+			 //si cumple la condicion anterior retorna true (Si)
+			 return true;
+		 }
+		 //condicion: si no se cumple
+		else {
+			//si no se cumple la condicion anterior retorna false (No)
+			return false;
+		}
+	 }
+	 
+	 /**
+	  * Metodo que obtiene el tamaño de la lista y lo retorna
+	  * Metodo tipo Int(Entero)
+	  * @return largo (la variable largo contiene el tamaño de la lista)
+	  */
+	public int largo(){
+		//devuelve el valor de la variable largo la cual contiene el tamaño de la lista
+		return largo;
+	}
+	
+	/**
+	 * Metodo que obtiene el dato del ultimo nodo de la lista
+	 * Metodo tipo Object
+	 * @return ultimo.datos(contiene el dato de el ultimo nodo de la lista)
+	 */
+	public Object fin(){
+		//devuelve ultimo.datos(contiene el dato de el ultimo nodo de la lista)
+		return ultimo.datos;
+	}
+	
+	/**
+	 * 
+	 * @return
+	 */
+	public Object inico(){
+		return primero.datos;
+	}
+	/**
+	 * 
+	 * @param dato
+	 */
+	public void insertarFinal(Object dato){
+		if (vacia()==true){
+			primero=new NodoSimple(dato);
+			ultimo= primero;
+		}
+		else{
+			NodoSimple inicial = ultimo;
+			NodoSimple nuevo= new NodoSimple(dato);
+			inicial.siguente=nuevo;
+			ultimo=nuevo;
+		}
+		largo++;
+	}
+	
+	/**
+	 * 
+	 * @param dato
+	 */
+	public void insertarInicio(Object dato){
+		if (vacia()==true){
+			primero=new NodoSimple(dato);
+			ultimo= primero;
+		}
+		else{
+			NodoSimple anterior = primero;
+			NodoSimple nuevo= new NodoSimple(dato);
+			nuevo.siguente=anterior;
+			primero=nuevo;
+		}
+		largo++;
+	}
+	
+	/**
+	 * 
+	 * @param pos
+	 * @return
+	 */
+	public Object buscarPosicion(int posicion){
+		if (posicion<=largo){
+			int contador=1;
+			NodoSimple aux = primero;
+			while(contador<posicion){
+				aux=aux.siguente;
+				contador++;
+			}
+			return aux.obtenerDato();
+		}
+		else{
+			return "Error";
+		}
+	}
+	
+	
+
+}
+//Fin clase ListaSimpleEnlazada

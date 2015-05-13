@@ -1,0 +1,270 @@
+package ArbolAVL;
+
+
+public class AVL {
+	//Se crea un objeto de tipo NodoAVL con el nombre de raiz que apuntara ala raiz del arbol
+	public NodoAVL raiz;
+	//Se crea un objeto de tipo String con el nombre de nombre que contendra el nombre del arbol
+	public String nombre;
+	//Se crea un objeto de tipo Int(Entero)con el nombre de largo que contendra la cantidad de elementos del arbol
+	public int largo;
+
+	/**
+	 * Consctructor de la clase que hace referencia al nodo raiz
+	 * Metodo de tipo AVL
+	 */
+	public AVL(){
+		//Al objeto raiz se le asigna el valor de nulo
+		raiz = null;
+	}
+	/**
+	 * 
+	 * @param pos
+	 */
+	public void buscar(int pos){
+		buscarAux(pos,raiz);
+	}
+	
+	/**
+	 * 
+	 * @param pos
+	 * @param aux
+	 * @return
+	 */
+	private NodoAVL buscarAux(int pos, NodoAVL aux){
+		if (raiz==null) {
+			return null;
+		}
+		else if (aux.llave==pos) {
+			return aux;
+		} 
+		else if (aux.llave<pos) {
+			return buscarAux(pos, aux.hijoDerecho);
+		}
+		else {
+			return buscarAux(pos, aux.hijoIzquierdo);
+		}
+	}
+	
+	/**
+	 * 
+	 * @param aux
+	 * @return
+	 */
+	public int obtenerFactorEquilibrio(NodoAVL aux){
+		if (aux==null) {
+			return -1;
+		}
+		else {
+			return aux.nodoAltura;
+		}
+	}
+	
+	/**
+	 * 
+	 * @param nodo
+	 * @return
+	 */
+	public NodoAVL rotacionSimpleIzquierda(NodoAVL nodo){
+		NodoAVL aux = nodo.hijoIzquierdo;
+		nodo.hijoIzquierdo=aux.hijoDerecho;
+		aux.hijoDerecho=nodo;
+		nodo.nodoAltura=Math.max(obtenerFactorEquilibrio(nodo.hijoIzquierdo), obtenerFactorEquilibrio(nodo.hijoDerecho))+1;
+		aux.nodoAltura=Math.max(obtenerFactorEquilibrio(aux.hijoIzquierdo), obtenerFactorEquilibrio(aux.hijoDerecho))+1;
+		return aux;
+	}
+	
+	/**
+	 * 
+	 * @param nodo
+	 * @return
+	 */
+	public NodoAVL rotacionSimpleDerecha(NodoAVL nodo){
+		NodoAVL aux = nodo.hijoDerecho;
+		nodo.hijoDerecho=aux.hijoIzquierdo;
+		aux.hijoIzquierdo=nodo;
+		nodo.nodoAltura=Math.max(obtenerFactorEquilibrio(nodo.hijoIzquierdo), obtenerFactorEquilibrio(nodo.hijoDerecho))+1;
+		aux.nodoAltura=Math.max(obtenerFactorEquilibrio(aux.hijoIzquierdo), obtenerFactorEquilibrio(aux.hijoDerecho))+1;
+		return aux;
+	}
+	
+	/**
+	 * 
+	 * @param nodo
+	 * @return
+	 */
+	public NodoAVL rotacionDobleIzquierda(NodoAVL nodo){
+		NodoAVL aux;
+		nodo.hijoIzquierdo=rotacionSimpleDerecha(nodo.hijoIzquierdo);
+		aux=rotacionSimpleIzquierda(nodo);
+		return aux;
+	}
+	
+	/** 
+	 * 
+	 * @param nodo
+	 * @return
+	 */
+	public NodoAVL rotacionDobleDerecha(NodoAVL nodo){
+		NodoAVL aux;
+		nodo.hijoDerecho=rotacionSimpleIzquierda(nodo.hijoDerecho);
+		aux=rotacionSimpleDerecha(nodo);
+		return aux;
+	}
+	
+	/**
+	 * 
+	 * @param nuevo
+	 * @param subArb
+	 * @return
+	 */
+	private NodoAVL insertarAVL (NodoAVL nuevo, NodoAVL subArb){
+		NodoAVL nuevoPadre=subArb;
+		if (nuevo.llave<subArb.llave) {
+			if (subArb.hijoIzquierdo==null) {
+				subArb.hijoIzquierdo=nuevo;
+			}
+			else {
+				subArb.hijoIzquierdo=insertarAVL(nuevo, subArb.hijoIzquierdo);
+				if (obtenerFactorEquilibrio(subArb.hijoIzquierdo)-obtenerFactorEquilibrio(subArb.hijoDerecho)==2) {
+					if (nuevo.llave<subArb.hijoIzquierdo.llave) {
+						nuevoPadre=rotacionSimpleIzquierda(subArb);
+					}
+					else {
+						nuevoPadre=rotacionDobleIzquierda(subArb);
+					}
+				}
+			}
+			
+		}
+		else if (nuevo.llave>subArb.llave) {
+			if (subArb.hijoDerecho==null) {
+				subArb.hijoDerecho=nuevo;
+			}
+			else {
+				subArb.hijoDerecho=insertarAVL(nuevo, subArb.hijoDerecho);
+				if (obtenerFactorEquilibrio(subArb.hijoDerecho)-obtenerFactorEquilibrio(subArb.hijoIzquierdo)==2) {
+					if (nuevo.llave>subArb.hijoDerecho.llave) {
+						nuevoPadre=rotacionSimpleDerecha(subArb);
+					}
+					else {
+						nuevoPadre=rotacionDobleDerecha(subArb);
+					}
+				}
+			}
+		}
+		else {
+			System.out.print("Nodo Duplicado");
+		}
+		
+		if ((subArb.hijoIzquierdo==null)&&(subArb.hijoDerecho!=null)) {
+			subArb.nodoAltura=subArb.hijoDerecho.nodoAltura+1;
+		}
+		else if ((subArb.hijoDerecho==null)&&(subArb.hijoIzquierdo!=null)){
+			subArb.nodoAltura=subArb.hijoIzquierdo.nodoAltura+1;
+		}
+		else {
+			subArb.nodoAltura=Math.max(obtenerFactorEquilibrio(subArb.hijoDerecho), obtenerFactorEquilibrio(subArb.hijoIzquierdo))+1;
+		}
+		return nuevoPadre;
+	}
+
+	/**
+	 * 
+	 * @param llave
+	 * @param dato
+	 */
+	public void insertar(int llave, String dato){
+		NodoAVL nuevo= new NodoAVL(llave,dato);
+		if (raiz==null) {
+			raiz = nuevo;
+		}
+		else {
+			raiz=insertarAVL(nuevo, raiz);
+		}
+	}
+	/**
+	 * Medoto que llama a una funcion para recorrer el arlbol en orden y le ingresa cono inicio la raiz
+	 * Metodo de tipo Void 
+	 */
+	public void recorridoEnOrdenAVL(){
+		//llamada al metodo recorridoEnOrdenAux(valor de inicio del recorrido)
+		recorridoEnOrdenAuxAVL(raiz);
+	}
+	
+	/**
+	 * Metodo que recorre el arbol en orden
+	 * Metodo de tipo Void
+	 * @param aux (valor de inicio del recorrido)
+	 */
+	private void recorridoEnOrdenAuxAVL(NodoAVL aux){
+		//condicion: si el nodo auxilar es diferente de nulo
+		if (aux!=null) {
+			//llamada al metodo recorridoEnORdenAux(dnado como vaor de inicio el hijo izquierdo del nodo)
+			recorridoEnOrdenAuxAVL(aux.hijoIzquierdo);
+			//Imprime en pantalla la llave del nodo
+			System.out.println(aux.llave);
+			//llamada al metodo recorridoEnORdenAux(dnado como vaor de inicio el hijo derecho del nodo)
+			recorridoEnOrdenAuxAVL(aux.hijoDerecho);
+			
+		}
+	}
+	
+	/**
+	 * Medoto que llama a una funcion para recorrer el arlbol en pre orden y le ingresa cono inicio la raiz
+	 * Metodo de tipo Void 
+	 */
+	public void recorridoEnPreOrdenAVL(){
+		recorridoEnPreOrdenAuxAVL(raiz);
+	}
+	
+	/**
+	 * Metodo que recorre el arbol en pre orden
+	 * Metodo de tipo Void
+	 * @param aux (valor de inicio del recorrido)
+	 */
+	private void recorridoEnPreOrdenAuxAVL(NodoAVL aux){
+		if (aux!=null) {
+			//Imprime en pantalla la llave del nodo
+			System.out.println(aux.llave);
+			//llamada al metodo recorridoEnPreORdenAux(dnado como vaor de inicio el hijo izquierdo del nodo)
+			recorridoEnPreOrdenAuxAVL(aux.hijoIzquierdo);
+			//llamada al metodo recorridoEnPreORdenAux(dnado como vaor de inicio el hijo derecho del nodo)
+			recorridoEnPreOrdenAuxAVL(aux.hijoDerecho);
+		}
+	}
+	
+	/**
+	 * Medoto que llama a una funcion para recorrer el arlbol en post orden y le ingresa cono inicio la raiz
+	 * Metodo de tipo Void 
+	 */
+	public void recorridoEnPostOrdenAVL(){
+		recorridoEnPostOrdenAuxAVL(raiz);
+	}
+	
+	/**
+	 * Metodo que recorre el arbol en post orden
+	 * Metodo de tipo Void
+	 * @param aux (valor de inicio del recorrido)
+	 */
+	private void recorridoEnPostOrdenAuxAVL(NodoAVL aux){
+		if (aux!=null) {
+			//llamada al metodo recorridoEnPostORdenAux(dnado como vaor de inicio el hijo izquierdo del nodo)
+			recorridoEnPostOrdenAuxAVL(aux.hijoIzquierdo);
+			//llamada al metodo recorridoEnPostORdenAux(dnado como vaor de inicio el hijo derecho del nodo)
+			recorridoEnPostOrdenAuxAVL(aux.hijoDerecho);
+			//Imprime en pantalla la llave del nodo
+			System.out.println(aux.llave);
+		}
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+}

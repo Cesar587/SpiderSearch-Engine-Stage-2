@@ -1,0 +1,89 @@
+package Main;
+import ArbolAVL.*;
+import ArbolBST.*;
+import Listas.*;
+import Parser.*;
+import java.io.File;
+import java.io.FilenameFilter;
+/**
+ * 
+ * @author Steven Ortiz
+ *
+ */
+public class Main {
+
+	public static void main(String[] args) {
+		 //walkin(new File("/home/steven/Dropbox")); //Replace this with a suitable directory
+		//ListaSimpleEnlazada lista = new ListaSimpleEnlazada();
+		//lista.insertarInicio(5);
+		//lista.insertarFinal(6);
+		//lista.insertarFinal(7);
+		//lista.insertarInicio(4);
+		//lista.insertarInicio(3);
+		//lista.insertarInicio(2);
+		//lista.insertarInicio(1);
+		//System.out.println("largo: "+lista.largo());
+		//System.out.println("Busca en posicion: "+lista.buscarPosicion(6));
+		//System.out.println("Busca en posicion: "+lista.buscarPosicion(25));
+		//System.out.println("Vacia: "+lista.vacia());
+		//System.out.println("primero: "+lista.inico());
+		//System.out.println("ultimo: "+lista.fin());
+		//lista.eliminarPrimero();
+		//lista.insertarNombe("Lista de Numeros");
+		//System.out.println(lista.nombreLista());
+		//lista.cortarPosicion(4);
+		//System.out.println("primero: "+lista.inico());
+		//System.out.println("Busca en posicion: "+lista.buscarPosicion(7));
+		//lista.eliminarPosicion(7);
+		//System.out.println("Busca en posicion: "+lista.buscarPosicion(6));
+		//System.out.println("Cuenta : "+lista.cuenta());
+		
+		
+		//BST arbol=new BST();
+		//System.out.println(arbol.vacio());
+		//arbol.insertar(8 , "casa");
+		//arbol.insertar(5 , "caza");
+		//arbol.insertar(9 , "cas");
+		//arbol.insertar(1 , "casar");
+		//arbol.insertar(12 , "cascara");
+		//arbol.insertar(8 , "casita");
+		//arbol.insertar(7 , "casota");
+		
+		//arbol.recorridoEnPostOrden();
+		
+		//System.out.println(arbol.vacio());
+		
+		//arbol.recorridoEnPreOrden();
+		
+		
+		
+		//rbol.recorridoEnPostOrden();
+		//arbol.eliminar(7);
+		//System.out.println(arbol.vacio());
+		//arbol.recorridoEnPostOrden();
+		//System.out.println(arbol.buscarDato("cas"));
+		//System.out.println(arbol.largo);
+	
+		//AVL arbolito=new AVL();
+		//arbolito.insertar(3, "casa");
+		//arbolito.insertar(5, "cas");
+		//arbolito.insertar(7, "casota");
+		//arbolito.insertar(2, "casita");
+		//arbolito.insertar(9, "cascara");
+		
+		//arbolito.recorridoEnPreOrdenAVL();
+		//System.out.println(arbolito.buscar(7).dato);
+		//System.out.println(arbolito.getLargo());
+		
+		//PdfParse a =  new PdfParse();
+		//a.parser();
+		
+		PdfParse cas =new PdfParse();
+		//cas.buscarsubcarpeta("/home/steven/Escritorio");
+		cas.buscarCarpetas("/home/steven/Escritorio").imprimir();
+		
+		
+	}
+	
+
+}

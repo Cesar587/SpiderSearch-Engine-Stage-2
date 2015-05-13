@@ -1,0 +1,32 @@
+//Ubiacion del archivo: C:\Users\Steven Ortiz\Desktop\SpiderSearch Engine Stage 2\src\Listas
+//Nombre del Arhivo: ListaSimpleEnlazada.java
+// Paquete Listas (contiene las clases nesesarias de las listas enlazadas)
+package Listas;
+
+/**
+ * Clase ListaSimpleEnlazada: Crea una lista simple enlazada, ademas contiene metodos para insertar objetos,
+ * eliminar objetos, buscar objetos,
+ * @author Steven Ortiz
+ * @version 1.0 (26/4/2015)
+ * @category Estructuras de datos lineales
+ */
+
+//Inicio de la clase ListaSimpleEnlazada
+public class ListaSimpleEnlazada {
+	//Se crea un 
+	 NodoSimple primero;
+	 NodoSimple ultimo;
+	 String nombre;
+	
+	 public boolean listaVacia(){
+		 if (primero ==null){
+			 return true;
+		 }
+		else {
+			return false;
+		}
+	 }
+	
+	
+
+}

@@ -1,0 +1,23 @@
+//Ubiacion del archivo: C:\Users\Steven Ortiz\Desktop\SpiderSearch Engine Stage 2\src\Listas
+//Nombre del Arhivo: NodoSimple.java
+// Paquete Listas (contiene las clases nesesarias de las listas enlazadas)
+package Listas;
+
+/**
+ * Clase NodoSimple: Contiene los Objetos y apuntadores que se utilizaran para las listas enlazadas
+ * @author Steven Ortiz
+ * @version 1.0 (24/4/2015)
+ * @category Estructuras de datos lineales
+ */
+
+// Clase NodoSimple contiene datos, apuntador, metodos para los apuntadoes y datos
+public class NodoSimple {
+	// datos: variable de tipo Objeto que contendra la informacion a almacenar
+	Object datos;
+	// siguiente: variable de tipo NodoSimple la cual nos servira de apuntador al siguente nodo
+	NodoSimple siguente;
+	
+	NodoSimple
+	 
+
+}
