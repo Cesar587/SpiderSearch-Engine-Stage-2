@@ -32,8 +32,7 @@ public class Server {
 			
 			
 			
-			//entrada=new DataInputStream(socketServico.getInputStream());
-			//mensaje=new PrintStream(socketServico.getOutputStream());
+			
 			
 			
 			//Inicia el socket, ahora esta esperando una conexión por parte del cliente
@@ -56,11 +55,7 @@ public class Server {
 			System.out.println("Cerrando conexión...");
 			miServico.close();//Aqui se cierra la conexión con el cliente
 			
-			//entrada.close();
-			//salida.close();
-			//mensaje.close();
-			
-			//socketServico.close();
+	
 			
 			}
 		

@@ -48,10 +48,10 @@ public class Main {
 
 		//parseo.Pdf("/home/steven/Escritorio/Java.pdf");
 	
-		//Server servidor =new Server();
-		//servidor.initServer();
+		Server servidor =new Server();
+		servidor.initServer();
 		
-		InterfazCliente venCliente =new InterfazCliente();
+		//InterfazCliente venCliente =new InterfazCliente();
 		//venCliente.crearVentana();
 	
 		
