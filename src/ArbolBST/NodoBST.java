@@ -1,5 +1,5 @@
 //Nombre del Arhivo: NodoBST.java
-// Paquete ArbolBST(contiene las clases nesesarias de los ArbolBST)
+// Paquete ArbolBST(contiene las clases nesesarias de los Arboles BST)
 package ArbolBST;
 
 /**
@@ -26,7 +26,7 @@ public class NodoBST {
 	
 	/**
 	 * Constructor  de la clase que crea un objeto NodoBST que hace referencia ala llave
-	 * Metodo tipo NodoSimple
+	 * Metodo tipo NodoBST
 	 * @param llave(llave del nodo)
 	 */
 	public NodoBST(int llave) {

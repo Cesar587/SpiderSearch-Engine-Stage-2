@@ -1,5 +1,5 @@
 //Nombre del Arhivo= NodoAVL.java
-//Paquete ArbolAVL (contiene las clases nesesarias de los ArbolAVL)
+//Paquete ArbolAVL (contiene las clases nesesarias de los Arboles AVL)
 package ArbolAVL;
 
 //Inicio de la clase NodoAVL
@@ -21,8 +21,9 @@ public class NodoAVL {
 	
 	/**
 	 * Constructor  de la clase que crea un objeto NodoAVL que hace referencia ala llave
-	 * Metodo tipo NodoSimple
+	 * Metodo tipo NodoAVL
 	 * @param llave(llave del nodo)
+	 * @param dato(dato del nodo)
 	 */
 	public NodoAVL(int llave ,String dato) {
 		// Al objeto padre se le asigan el valor de nulo

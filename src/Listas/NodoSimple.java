@@ -14,7 +14,7 @@ package Listas;
 // Clase NodoSimple contiene datos, apuntador, metodos para los apuntadoes y datos
 public class NodoSimple {
 	// datos: variable de tipo Objeto que contendra la informacion a almacenar
-	public Object datos;
+	public String datos;
 	// siguiente: variable de tipo NodoSimple la cual nos servira de apuntador al siguente nodo
 	public NodoSimple siguente;
 	
@@ -23,7 +23,7 @@ public class NodoSimple {
 	 * Metodo tipo NodoSimple
 	 * @param valor es un objeto de tipo Objetc
 	 */
-	public NodoSimple(Object valor){
+	public NodoSimple(String valor){
 		// Al objeto datos se le asigan el valor del objeto valor
 		this.datos=valor;
 		// Al objeto siguiente se le asigan el valor de nulo
@@ -65,7 +65,7 @@ public class NodoSimple {
 	  * Metodo tipo Void
 	  * @param datos nuevo valor a cambiar
 	  */
-	public void cambioDatos(Object datos) {
+	public void cambioDatos(String datos) {
 		//Se le asigana el nuevo valor
 		this.datos = datos;
 	}

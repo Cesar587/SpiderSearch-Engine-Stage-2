@@ -67,9 +67,9 @@ public class ListaSimpleEnlazada {
 	 * Metodo tipo Object
 	 * @return primero.datos(contiene el dato de el primer nodo de la lista)
 	 */
-	public Object inico(){
+	public NodoSimple inicio(){
 		//devuele primero.datos(contiene el dato de el primer nodo de la lista)
-		return primero.datos;
+		return primero;
 	}
 	
 	/**
@@ -77,7 +77,7 @@ public class ListaSimpleEnlazada {
 	 * Metodo tipo Void
 	 * @param dato(dato del nodo a insertar)
 	 */
-	public void insertarFinal(Object dato){
+	public void insertarFinal(String dato){
 		//Condicion: verifica si la lista esta vacia
 		if (vacia()==true){
 			//posiciona el apuntador de el primer nodo a el nuevo nodo
@@ -105,7 +105,7 @@ public class ListaSimpleEnlazada {
 	 * Metodo tipo Void
 	 * @param dato (dato del nodo a insertar)
 	 */
-	public void insertarInicio(Object dato){
+	public void insertarInicio(String dato){
 		//Condicion: verifica si la lista esta vacia
 		if (vacia()==true){
 			//posiciona el apuntador de el primer nodo a el nuevo nodo
