@@ -1,13 +1,4 @@
-ArbolAVL
-ArbolB
-ArbolBST
-ArbolHeapSort
-ArbolRojiNegro
-ArbolSplay
-Carpetas
-Hilos
-Interfacez
-Listas
+Cliente
 Main
 Parser
-Servidor
+interfaz

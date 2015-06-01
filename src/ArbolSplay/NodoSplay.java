@@ -23,6 +23,8 @@ public class NodoSplay {
 	public NodoSplay hijoDerecho;
 	//Se crea un objeto de tipo NodoSplay con el nombre de padre que apuntara al padre del nodo
 	public NodoSplay padre;
+	//Se crea un objeto de tipo NodoSplay con el nombre de abuelo que apuntara al abuelo del nodo
+	public NodoSplay abuelo;
 	
 	/**
 	 * Constructor  de la clase que crea un objeto NodoSplay que hace referencia ala llave
@@ -35,6 +37,8 @@ public class NodoSplay {
 		this.llave=llaveN;
 		// Al objeto padre se le asigan el valor de nulo
 		this.padre=null;
+		// Al objeto abuelo se le asigan el valor de nulo
+		this.abuelo=null;
 		// Al objeto hijoIzquierdo se le asigan el valor de nulo
 		this.hijoIzquiero = null;
 		// Al objeto hijoDerecho se le asigan el valor de nulo

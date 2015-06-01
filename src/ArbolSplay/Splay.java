@@ -1,201 +1,164 @@
 package ArbolSplay;
 
 public class Splay {
-	
 	public int cont;
 	public String codigot;
 	public NodoSplay raiz;
-	public NodoSplay auxiliarPadre;
-	public NodoSplay auxiliarHijo;
+	public NodoSplay auxp;
+	public NodoSplay auxh;
 	public boolean bandera = true;
-	public int largo; {
-		
-	}
-	
-	public Splay(){
-		raiz=null;
 
-	}
-
-	/**
-	 * 
-	 * @param llaveN
-	 * @param datoN
-	 * @return
-	 */
-	public void insertar(int llaveN , String datoN){
-		NodoSplay nuevo = new NodoSplay (llaveN,datoN);
-		if (raiz == null){
-			raiz = nuevo;
-		}
+	public NodoSplay Insertar (int llaveN,String datoN){
+		if (raiz == null)
+			raiz = new NodoSplay (llaveN, datoN);
 		else{
-			auxiliarPadre = null;
-			auxiliarHijo = raiz;
-			while (auxiliarHijo != null){
-				if (nuevo.llave <= auxiliarHijo.llave){
-					auxiliarPadre = auxiliarHijo;
-					auxiliarHijo = auxiliarHijo.hijoIzquiero;
+			auxp = null;
+			auxh = raiz;
+			while (auxh != null){
+				if (llaveN <= auxh.llave){
+					auxp = auxh;
+					auxh = auxh.hijoIzquiero;
 				}
 				else{
-					auxiliarPadre = auxiliarHijo;
-					auxiliarHijo = auxiliarHijo.hijoDerecho;
+					auxp = auxh;
+					auxh = auxh.hijoDerecho;
 				}
 			}
-			
-			if (auxiliarPadre.llave < nuevo.llave){
-				auxiliarPadre.hijoDerecho = nuevo;
-				largo++;
-				Subir (auxiliarPadre, nuevo);
+			NodoSplay nuevo = new NodoSplay (llaveN, datoN);
+			if (auxp.llave < llaveN){
+				auxp.hijoDerecho = nuevo;
+				Subir (auxp, nuevo);
 			}
 			else{
-				auxiliarPadre.hijoIzquiero = nuevo;
-				largo++;
-				Subir (auxiliarPadre, nuevo);
+				auxp.hijoIzquiero = nuevo;
+				Subir (auxp, nuevo);
 			}
 		}
+		return raiz;
 	}
-	
-	
-	//rotacion zag zig
-	/**
-	 * 
-	 * @param abuelo
-	 */
-	public void zagzig(NodoSplay abuelo){
-		if(cont==1 || cont ==2){
-			cont=0;
-			NodoSplay nuevo = new NodoSplay (abuelo.llave, abuelo.dato);
-			nuevo.hijoIzquiero = abuelo.hijoIzquiero;
-			nuevo.hijoDerecho = abuelo.hijoDerecho;
-			abuelo.llave = auxiliarHijo.llave;
-			abuelo.dato=auxiliarHijo.dato;
-			nuevo.hijoDerecho = auxiliarHijo.hijoIzquiero;
-			abuelo.hijoIzquiero = nuevo;
-			auxiliarPadre.hijoIzquiero = auxiliarHijo.hijoDerecho;
-			abuelo.hijoDerecho = auxiliarPadre;
-		}
-		if (abuelo == raiz){
-			raiz = abuelo;
-			bandera = false;
-		}
-		auxiliarHijo = abuelo;
-		auxiliarPadre = TieneAbuelo (auxiliarHijo);
-	}
-	
-	//rotacion zig zag
-	public void zigzag(NodoSplay abuelo){
-		if(cont==1 || cont ==2){
-			cont=0;
-			NodoSplay nuevo = new NodoSplay (abuelo.llave, abuelo.dato);
-			nuevo.hijoIzquiero = abuelo.hijoIzquiero;
-			nuevo.hijoDerecho = abuelo.hijoDerecho;
-			abuelo.llave = auxiliarHijo.llave;
-			abuelo.dato=auxiliarHijo.dato;
-			nuevo.hijoIzquiero = auxiliarHijo.hijoDerecho;
-			abuelo.hijoDerecho = nuevo;
-			auxiliarPadre.hijoDerecho = auxiliarHijo.hijoIzquiero;
-			abuelo.hijoIzquiero = auxiliarPadre;
-		}
-		if (abuelo == raiz){
-			raiz = abuelo;
-			bandera = false;
-		}
-		auxiliarHijo = abuelo;
-		auxiliarPadre = TieneAbuelo (auxiliarHijo);
 
+	//Contructor
+	public Splay(){
+		raiz = null;
+	}
+
+	//rotacion zag zag
+	public void zagzag(NodoSplay abuelo){
+		if(cont<2){
+			cont++;
+			NodoSplay nuevo = new NodoSplay(abuelo.llave,abuelo.dato);
+			nuevo.hijoIzquiero = abuelo.hijoIzquiero;
+			nuevo.hijoDerecho = abuelo.hijoDerecho;
+			nuevo.hijoDerecho = auxp.hijoIzquiero;
+			abuelo.hijoIzquiero = nuevo;
+			abuelo.hijoDerecho = auxp.hijoDerecho;
+			abuelo.llave = auxp.llave;
+			abuelo.dato=auxp.dato;
+			if (abuelo == raiz)
+				bandera = false;
+			auxp = abuelo;
+		}
+		else{
+			cont=0;
+		}	
+	}
+
+	//rotacion zag zig
+	public void zagzig(NodoSplay abuelo){
+		cont=0;
+		NodoSplay nuevo = new NodoSplay (abuelo.llave, abuelo.dato);
+		nuevo.hijoIzquiero = abuelo.hijoIzquiero;
+		nuevo.hijoDerecho = abuelo.hijoDerecho;
+		abuelo.llave = auxh.llave;
+		abuelo.dato=auxh.dato;
+		nuevo.hijoDerecho = auxh.hijoIzquiero;
+		abuelo.hijoIzquiero= nuevo;
+		auxp.hijoIzquiero = auxh.hijoDerecho;
+		abuelo.hijoDerecho = auxp;
+		if (abuelo == raiz){
+			raiz = abuelo;
+			bandera = false;
+		}
+		auxh = abuelo;
+		auxp = TieneAbuelo (auxh);
 	}
 
 	//rotacion zig zig
-	/**
-	 * 
-	 * @param abuelo
-	 */
 	public void zigzig(NodoSplay abuelo){
-
 		if(cont<2){
 			cont++;
 			NodoSplay nuevo = new NodoSplay (abuelo.llave, abuelo.dato);
-			nuevo.hijoIzquiero = abuelo.hijoIzquiero;
+			nuevo.hijoIzquiero = abuelo.hijoDerecho;
 			nuevo.hijoDerecho = abuelo.hijoDerecho;
-			nuevo.hijoIzquiero = auxiliarPadre.hijoDerecho;
+			nuevo.hijoIzquiero = auxp.hijoDerecho;
 			abuelo.hijoDerecho = nuevo;
-			abuelo.hijoIzquiero = auxiliarPadre.hijoIzquiero;
-			abuelo.llave = auxiliarPadre.llave;
-			abuelo.dato=auxiliarPadre.dato;
-			if (abuelo == raiz){
+			abuelo.hijoIzquiero = auxp.hijoIzquiero;
+			abuelo.llave = auxp.llave;
+			abuelo.dato=auxp.dato;
+			if (abuelo == raiz)
 				bandera = false;
-				auxiliarPadre = abuelo;
-			}
+			auxp = abuelo;
 		}
 		else{
+			cont=0;
+		}	
+	}
 
-			cont=0;
-		}	
-			
-	}
-	//rotacion zag zag
-	/**
-	 * 
-	 * @param abuelo
-	 */
-	public void rotacionZagZag(NodoSplay abuelo){
-		if(cont<2){
-			cont++;
-			NodoSplay nuevo = new NodoSplay (abuelo.llave, abuelo.dato);
-			nuevo.hijoIzquiero = abuelo.hijoIzquiero;
-			nuevo.hijoDerecho = abuelo.hijoDerecho;
-			nuevo.hijoDerecho = auxiliarPadre.hijoIzquiero;
-			abuelo.hijoIzquiero = nuevo;
-			abuelo.hijoDerecho = auxiliarPadre.hijoDerecho;
-			abuelo.llave = auxiliarPadre.llave;
-			abuelo.dato=auxiliarPadre.dato;
-			if (abuelo == raiz){
-				bandera = false;
-				auxiliarPadre = abuelo;
-			}
+	//rotacion zig zag
+	public void zigzag(NodoSplay abuelo){
+		cont=0;
+		NodoSplay nuevo = new NodoSplay (abuelo.llave, abuelo.dato);
+		nuevo.hijoIzquiero = abuelo.hijoIzquiero;
+		nuevo.hijoDerecho = abuelo.hijoDerecho;
+		abuelo.llave = auxh.llave;
+		abuelo.dato=auxh.dato;
+		nuevo.hijoIzquiero = auxh.hijoDerecho;
+		abuelo.hijoDerecho = nuevo;
+		auxp.hijoDerecho = auxh.hijoIzquiero;
+		abuelo.hijoIzquiero = auxp;
+		if (abuelo == raiz){
+			raiz = abuelo;
+			bandera = false;
 		}
-		else{
-			cont=0;
-		}	
+		auxh = abuelo;
+		auxp = TieneAbuelo (auxh);
 	}
+
 	//rotacion zig
 	public void zig(){
-		if(cont==2){
-			raiz.hijoIzquiero = auxiliarHijo;
-			auxiliarHijo.hijoDerecho = raiz;
-			raiz = auxiliarHijo;
-			cont=0;
-		}
+		raiz.hijoIzquiero = auxh.hijoDerecho;
+		auxh.hijoDerecho = raiz;
+		raiz = auxh;
+		cont=0;
 	}
+
 	//rotacion zag
 	public void zag(){
-		if(cont==2){
-			raiz.hijoDerecho = auxiliarHijo;
-			auxiliarHijo.hijoIzquiero = raiz;
-			raiz = auxiliarHijo;
-			cont=0;
-		}
+		raiz.hijoDerecho = auxh.hijoIzquiero;
+		auxh.hijoIzquiero = raiz;
+		raiz = auxh;
+		cont=0;
 	}
 
 	//sube el recien insertado a la raiz
 	public void Subir (NodoSplay padre, NodoSplay hijo){
 		bandera=true;
-		auxiliarPadre=padre;
-		auxiliarHijo=hijo;
-		while ((bandera == true) && (TieneAbuelo (auxiliarPadre) != null)){
-			NodoSplay abuelo = TieneAbuelo (auxiliarPadre);
+		auxp=padre;
+		auxh=hijo;
+		while ((bandera == true) && (TieneAbuelo (auxp) != null)){
+			NodoSplay abuelo = TieneAbuelo (auxp);
 			//zag zag
-			if ((abuelo.hijoDerecho == auxiliarPadre) && (auxiliarPadre.hijoDerecho == auxiliarHijo)){
-				rotacionZagZag(abuelo);
+			if ((abuelo.hijoDerecho == auxp) && (auxp.hijoDerecho == auxh)){
+				zagzag(abuelo);
 			}
 			else{
 				//zag zig
-				if ((abuelo.hijoDerecho == auxiliarPadre) && (auxiliarPadre.hijoIzquiero == auxiliarHijo)){
+				if ((abuelo.hijoDerecho == auxp) && (auxp.hijoIzquiero == auxh)){
 					zagzig(abuelo);
 				}
 				else{
 					//zig zig
-					if ((abuelo.hijoIzquiero == auxiliarPadre) && (auxiliarPadre.hijoIzquiero == auxiliarHijo)){
+					if ((abuelo.hijoIzquiero == auxp) && (auxp.hijoIzquiero == auxh)){
 						zigzig(abuelo);
 					}
 					//zig zag
@@ -205,9 +168,9 @@ public class Splay {
 				}
 			}
 		}
-		if (auxiliarHijo != raiz){
+		if (auxh != raiz){
 			//zag
-			if (raiz.hijoDerecho == auxiliarHijo){
+			if (raiz.hijoDerecho == auxh){
 				zag();
 			}
 			//zig
@@ -222,22 +185,19 @@ public class Splay {
 		if (nodo == raiz)
 			return null;
 		else{
-			NodoSplay abuelo = null;
-			NodoSplay padre = null;
+			NodoSplay padre=null;
 			NodoSplay hijo = raiz;
 			while (hijo != nodo){
 				if (nodo.llave <= hijo.llave){
-					abuelo=padre;
 					padre = hijo;
 					hijo = hijo.hijoIzquiero;
 				}
 				else{
-					abuelo=padre;
 					padre = hijo;
 					hijo = hijo.hijoDerecho;
 				}
 			}
-			return abuelo;
+			return padre;
 		}
 	}
 
@@ -247,21 +207,21 @@ public class Splay {
 			return;
 		else{
 			Inorden (root.hijoIzquiero);
-			System.out.println (root.llave + " "+root.dato);
+			System.out.println (root.llave + " ");
 			Inorden (root.hijoDerecho);
 		}
 	}
-
+	
 	public void Preorden (NodoSplay root){
 		if(root==null)
 			return;
 		else{
-			System.out.println (root.llave + " "+root.dato);
+			System.out.println (root.llave + " ");
 			Preorden (root.hijoIzquiero);
 			Preorden (root.hijoDerecho);
 		}
 	}
-	
+
 	//elimina un elemento de un arbol splay y coloca su antecesor
 	//en la raiz	
 	public NodoSplay Eliminar (int llaveN){
@@ -345,12 +305,13 @@ public class Splay {
 				NodoSplay aux = TieneAbuelo (padre);
 				if (padre != raiz)
 					Subir (aux, padre);
+				return null;
 			}
 			else{
 				Subir (padre, hijo);
+				return raiz;
 			}
 		}
-		return raiz;
 	}
 
 	//retorna si es miembro un elemento
@@ -370,9 +331,4 @@ public class Splay {
 			return true;
 	}
 }
-	
-	
-	
-
-
 

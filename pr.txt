@@ -1,0 +1,88 @@
+Elemento: 1
+Elemento: 2
+Elemento: 20
+Rotacion Izquierda
+Elemento: 8
+Cambio de color
+Elemento: 12
+Rotacion Izquierda
+Rotacion Derecha
+Elemento: 4
+Cambio de color
+Elemento: 21
+Elemento: 18
+Elemento: 7
+Rotacion Izquierda
+Rotacion Derecha
+Elemento: 52
+Cambio de color
+Rotacion Izquierda
+Elemento: 63
+Rotacion Izquierda
+Elemento: 17
+Elemento: 1
+Elemento: 2
+Elemento: 20
+Rotacion Izquierda
+Elemento: 8
+Cambio de color
+Elemento: 12
+Rotacion Izquierda
+Rotacion Derecha
+Elemento: 4
+Cambio de color
+Elemento: 21
+Elemento: 18
+Elemento: 7
+Rotacion Izquierda
+Rotacion Derecha
+Elemento: 52
+Cambio de color
+Rotacion Izquierda
+Elemento: 63
+Rotacion Izquierda
+Elemento: 17
+Elemento: 1
+Elemento: 2
+Elemento: 20
+Rotacion Izquierda
+Elemento: 8
+Cambio de color
+Elemento: 12
+Rotacion Izquierda
+Rotacion Derecha
+Elemento: 4
+Cambio de color
+Elemento: 21
+Elemento: 18
+Elemento: 7
+Rotacion Izquierda
+Rotacion Derecha
+Elemento: 52
+Cambio de color
+Rotacion Izquierda
+Elemento: 63
+Rotacion Izquierda
+Elemento: 17
+Elemento: 1
+Elemento: 2
+Elemento: 20
+Rotacion Izquierda
+Elemento: 8
+Cambio de color
+Elemento: 12
+Rotacion Izquierda
+Rotacion Derecha
+Elemento: 4
+Cambio de color
+Elemento: 21
+Elemento: 18
+Elemento: 7
+Rotacion Izquierda
+Rotacion Derecha
+Elemento: 52
+Cambio de color
+Rotacion Izquierda
+Elemento: 63
+Rotacion Izquierda
+Elemento: 17

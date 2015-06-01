@@ -18,6 +18,8 @@ public class AVL {
 	public String nombre;
 	//Se crea un objeto de tipo Int(Entero)con el nombre de largo que contendra la cantidad de elementos del arbol
 	public int largo;
+	
+	public int repeticiones;
 
 	/**
 	 * Consctructor de la clase que hace referencia al nodo raiz
@@ -25,7 +27,10 @@ public class AVL {
 	 */
 	public AVL(){
 		//Al objeto raiz se le asigna el valor de nulo
-		raiz = null;
+		this.raiz = null;
+		this.largo=0;
+		this.repeticiones=0;
+		
 	}
 	/**
 	 * Metodo que busca un nodo en el arbol segun la llave
@@ -172,7 +177,7 @@ public class AVL {
 	 */
 	private NodoAVL insertarAVL (NodoAVL nuevo, NodoAVL subArb){
 		NodoAVL nuevoPadre=subArb;
-		if (nuevo.llave<subArb.llave) {
+		if (nuevo.llave<=subArb.llave) {
 			if (subArb.hijoIzquierdo==null) {
 				subArb.hijoIzquierdo=nuevo;
 			}
@@ -189,7 +194,7 @@ public class AVL {
 			}
 			
 		}
-		else if (nuevo.llave>subArb.llave) {
+		else{
 			if (subArb.hijoDerecho==null) {
 				subArb.hijoDerecho=nuevo;
 			}
@@ -205,9 +210,7 @@ public class AVL {
 				}
 			}
 		}
-		else {
-			System.out.print("Nodo Duplicado");
-		}
+		
 		
 		if ((subArb.hijoIzquierdo==null)&&(subArb.hijoDerecho!=null)) {
 			subArb.nodoAltura=subArb.hijoDerecho.nodoAltura+1;
@@ -226,7 +229,7 @@ public class AVL {
 	 * @param llave
 	 * @param dato
 	 */
-	public void insertar(int llave, String dato){
+	public void Insertar(int llave, String dato){
 		NodoAVL nuevo= new NodoAVL(llave,dato);
 		if (raiz==null) {
 			raiz = nuevo;
@@ -235,6 +238,7 @@ public class AVL {
 			raiz=insertarAVL(nuevo, raiz);
 		}
 		largo++;
+		repeticiones+=llave;
 		
 		
 	}

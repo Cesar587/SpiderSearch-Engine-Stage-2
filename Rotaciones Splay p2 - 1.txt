@@ -1,0 +1,49 @@
+Elemento: 1
+Elemento: 1
+Elemento: 2
+zag
+Elemento: 8
+zag
+Elemento: 12
+zag
+Elemento: 3
+zig zag
+zig 
+Elemento: 16
+zag zag
+Elemento: 19
+zag
+Elemento: 5
+zag zig
+zig zig 
+zig 
+Elemento: 10
+zig zag
+zag
+Elemento: 90
+zag zag 
+zag
+Elemento: 1
+Elemento: 2
+zag
+Elemento: 8
+zag
+Elemento: 12
+zag
+Elemento: 3
+zig zag
+zig 
+Elemento: 16
+zag zag
+Elemento: 19
+zag
+Elemento: 5
+zag zig
+zig zig 
+zig 
+Elemento: 10
+zig zag
+zag
+Elemento: 90
+zag zag 
+zag

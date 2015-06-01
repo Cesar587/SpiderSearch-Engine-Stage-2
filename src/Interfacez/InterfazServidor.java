@@ -6,8 +6,6 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
-import java.io.*;
-
 import Servidor.*;
 
 public class InterfazServidor implements ActionListener{
@@ -15,7 +13,6 @@ public class InterfazServidor implements ActionListener{
 	JLabel textoVentana;
 	JButton botonVentana, boton2Ventana;
 	ServidorPricipal servidor=new ServidorPricipal("hilo Servidor");
-	Client cliente=new Client();
 	boolean encendido= false;
 	
 	public void crearVentana(){

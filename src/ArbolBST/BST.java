@@ -2,6 +2,7 @@
 //Paquete ArbolBST (contiene las clases nesesarias de los ArbolBST)
 package ArbolBST;
 
+
 /**
  * Clase BST: Contiene los objetos (raiz y nombre)y los
  * metodos de (insertar, borrar, vacio, raiz, altura, cantidad de nodos) 
@@ -38,7 +39,7 @@ public class BST{
 	 * @param llave (llave del nodo a insertar)
 	 * @param dato (dato del nodo a insertar)
 	 */
-	public void insertar(int llave , Object dato){
+	public void Insertar(int llave , Object dato){
 		//Se crea un objeto de tipo NodoBST y se le asigana el nombre de nuevo
 		NodoBST nuevo= new NodoBST(llave);
 		//al nodo nuevo se le agrega el dato el cual se toma de la entrada del usuario
@@ -385,6 +386,28 @@ public class BST{
 	public NodoBST obtenerRaiz() {
 		//retorna la raiz
 		return raiz;
+	}
+	public void InOrden(){
+		//llamada al metodo recorridoEnOrdenAux(valor de inicio del recorrido)
+		InOrdenAux(raiz);
+	}
+	
+	/**
+	 * Metodo que recorre el arbol en orden
+	 * Metodo de tipo Void
+	 * @param aux (valor de inicio del recorrido)
+	 */
+	private void InOrdenAux(NodoBST aux){
+		//condicion: si el nodo auxilar es diferente de nulo
+		if (aux!=null) {
+			//llamada al metodo recorridoEnORdenAux(dnado como vaor de inicio el hijo izquierdo del nodo)
+			InOrdenAux(aux.hijoIzquierdo);
+			//Imprime en pantalla la llave del nodo
+			System.out.println(aux.llave);
+			//llamada al metodo recorridoEnORdenAux(dnado como vaor de inicio el hijo derecho del nodo)
+			InOrdenAux(aux.hijoDerecho);
+			
+		}
 	}
 
 }
